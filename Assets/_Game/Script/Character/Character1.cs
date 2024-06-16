@@ -1,29 +1,28 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class Character1 : MonoBehaviour
 {
     [SerializeField] private GameObject bag;
-    [SerializeField] private GameObject brick;
+    [SerializeField] private GameObject brickPrefab;
     [SerializeField] protected ColorData colorData;
-    [SerializeField] private UnityEngine.Object childObject;
-    [SerializeField] private Brick brickprefab;
     [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
 
-    protected static int lastColorIndex = -1;
-    protected static int colorCount = System.Enum.GetValues(typeof(ColorEnum)).Length;
     protected List<GameObject> listBrick = new List<GameObject>();
     protected ColorEnum colorPlayer;
     float height;
     protected int collectedBricks = 0;
+    private GameManager color;
     protected virtual void Start()
     {
-        SetColorPlayer();
+        color = FindObjectOfType<GameManager>();
+        if (color != null)
+        {
+            colorPlayer = color.RandomColor();
+            SetColorPlayer(colorPlayer);
+        }
     }
 
     protected virtual void CollideWithBrick(Collider other)
@@ -35,34 +34,22 @@ public class Character1 : MonoBehaviour
             EatBrick(brick);
             collectedBricks++;
         }
-        else
-        {
-            return;
-        }
-    }
-    protected virtual void SetColorPlayer()
-    {
-        ColorEnum newColor = GetUniqueColor();
-        colorPlayer = newColor;
-        Material playerMaterial = colorData.GetColorData(colorPlayer);
-        skinnedMeshRenderer.material = playerMaterial;
     }
 
-    protected ColorEnum GetUniqueColor()
+    protected void SetColorPlayer(ColorEnum colorCharacter)
     {
-        lastColorIndex = (lastColorIndex + 1) % colorCount;
-        if (lastColorIndex == 0)
+        Material playerMaterial = colorData.GetColorData(colorCharacter);
+        if (playerMaterial != null)
         {
-            lastColorIndex++;
+            skinnedMeshRenderer.material = playerMaterial;
         }
-
-        return (ColorEnum)lastColorIndex;
     }
+
     public void EatBrick(Brick brick)
     {
         height = listBrick.Count * 0.2f;
-        GameObject go = Instantiate(this.brick, bag.transform.position, bag.transform.rotation);
-        go.transform.position = new(bag.transform.position.x, bag.transform.position.y + height, bag.transform.position.z);
+        GameObject go = Instantiate(brickPrefab, bag.transform.position, bag.transform.rotation);
+        go.transform.position = new Vector3(bag.transform.position.x, bag.transform.position.y + height, bag.transform.position.z);
         Material goMaterial = colorData.GetColorData(colorPlayer);
         MeshRenderer goMesh = go.GetComponent<MeshRenderer>();
         goMesh.material = goMaterial;

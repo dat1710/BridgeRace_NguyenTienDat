@@ -11,6 +11,7 @@ TagManager:
   - Character
   - Win
   - Bot
+  - SpawnCharacter
   layers:
   - Default
   - TransparentFX

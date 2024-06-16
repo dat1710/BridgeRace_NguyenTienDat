@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 4284753873674334137}
   - component: {fileID: 5605520726812833384}
   - component: {fileID: 6429677172862765675}
-  - component: {fileID: 1759473448843162325}
+  - component: {fileID: 7218548232522426616}
   m_Layer: 5
   m_Name: WinMenu
   m_TagString: Untagged
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1759473448843162325
+--- !u!114 &7218548232522426616
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -250,9 +250,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1652165190578961816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a68488f2e05a54f4e8079b78022d6dcf, type: 3}
+  m_Script: {fileID: 11500000, guid: 791f69d2c5bd12d4eaa1b803707c164c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  replayButton: {fileID: 1565430926739155349}
+  nextLevelButton: {fileID: 3451098746069625927}
 --- !u!1 &2438116618987533012
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +376,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1759473448843162325}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 1
@@ -925,7 +927,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1759473448843162325}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: RetryGame
         m_Mode: 1

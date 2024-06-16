@@ -16,10 +16,8 @@ public class AIScript : Character1
     protected override void Start()
     {
         GameObject winObject = GameObject.FindWithTag("Win");
-        if (winObject != null)
-        {
-            movePositionTransform = winObject.transform;
-        }
+        movePositionTransform = winObject.transform;
+        Debug.Log(movePositionTransform.position);
         base.Start();
         navMeshAgent = GetComponent<NavMeshAgent>();
         bricksInScene = new List<GameObject>(GameObject.FindGameObjectsWithTag("Brick"));
@@ -38,6 +36,10 @@ public class AIScript : Character1
         }
         else
         {
+            if (movePositionTransform == null)
+            {
+                movePositionTransform = GameObject.FindWithTag("Win").transform;
+            }
             navMeshAgent.destination = movePositionTransform.position;
             bricksInScene = new List<GameObject>(GameObject.FindGameObjectsWithTag("Brick"));
         }

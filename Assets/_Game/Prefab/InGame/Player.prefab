@@ -628,16 +628,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bag: {fileID: 4136510735226755195}
-  brick: {fileID: 4344247564813522157, guid: efc37751324ce4044aa8f0e9df32059a, type: 3}
+  brickPrefab: {fileID: 4344247564813522157, guid: efc37751324ce4044aa8f0e9df32059a, type: 3}
   colorData: {fileID: 11400000, guid: e37d9e3c887499643baeee67896ef490, type: 2}
-  childObject: {fileID: 2763748034082519415}
-  brickprefab: {fileID: 2871564159529693628, guid: efc37751324ce4044aa8f0e9df32059a, type: 3}
   skinnedMeshRenderer: {fileID: 5676018279964945315}
-  joystick: {fileID: 0}
   characterController: {fileID: 3522670802673354353}
   gravity: -9.81
   moveSpeed: 10
-  botPrefab: {fileID: 4633049386993207843, guid: 8d5e6b05b8b1f804c8654ac4f45d58cc, type: 3}
 --- !u!143 &3522670802673354353
 CharacterController:
   m_ObjectHideFlags: 0
@@ -663,7 +659,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.12, z: 0}
+  m_Center: {x: 0, y: 1.26, z: 0}
 --- !u!54 &889397912319662386
 Rigidbody:
   m_ObjectHideFlags: 0

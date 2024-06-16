@@ -7,26 +7,35 @@ using static Unity.VisualScripting.StickyNote;
 
 public class PlayerController : Character1
 {
-    [SerializeField] private FixedJoystick joystick;
     [SerializeField] protected CharacterController characterController;
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float moveSpeed = 15;
-    [SerializeField] private GameObject botPrefab;
+    private FixedJoystick joystick;
     private Vector3 velocity;
     private bool canMoveForward = true;
 
     protected override void Start()
     {
-        for (int i = 0; i < 2; i++)
-        {
-            GameObject a = Instantiate(botPrefab, transform.position, transform.rotation);
-        }
+        joystick = FindObjectOfType<FixedJoystick>();
         base.Start();
         characterController = GetComponent<CharacterController>();
     }
 
     void Update()
     {
+        float horizontal = -joystick.Horizontal;
+        float vertical = -joystick.Vertical;
+
+        // Kiểm tra xem có input từ joystick không
+        if (horizontal != 0f || vertical != 0f)
+        {
+            // Tính toán hướng mới dựa trên input
+            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+            // Chuyển đổi hướng thành quaternion dựa trên hướng trên mặt phẳng XZ
+            Quaternion newRotation = Quaternion.LookRotation(direction, Vector3.up);
+            // Áp dụng rotation mới cho nhân vật
+            transform.rotation = newRotation;
+        }
         if (canMoveForward || joystick.Vertical < 0)
         {
             Vector3 move = new Vector3(joystick.Horizontal * -moveSpeed, 0, joystick.Vertical * -moveSpeed);

@@ -287,10 +287,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bag: {fileID: 7557004655444223821}
-  brick: {fileID: 4344247564813522157, guid: efc37751324ce4044aa8f0e9df32059a, type: 3}
+  brickPrefab: {fileID: 4344247564813522157, guid: efc37751324ce4044aa8f0e9df32059a, type: 3}
   colorData: {fileID: 11400000, guid: e37d9e3c887499643baeee67896ef490, type: 2}
-  childObject: {fileID: 8140038991984472084}
-  brickprefab: {fileID: 2871564159529693628, guid: efc37751324ce4044aa8f0e9df32059a, type: 3}
   skinnedMeshRenderer: {fileID: 7716159033091768356}
 --- !u!1 &5132816937639055010
 GameObject:
