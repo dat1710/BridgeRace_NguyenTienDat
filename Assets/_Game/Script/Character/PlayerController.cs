@@ -25,15 +25,10 @@ public class PlayerController : Character1
     {
         float horizontal = -joystick.Horizontal;
         float vertical = -joystick.Vertical;
-
-        // Kiểm tra xem có input từ joystick không
         if (horizontal != 0f || vertical != 0f)
         {
-            // Tính toán hướng mới dựa trên input
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-            // Chuyển đổi hướng thành quaternion dựa trên hướng trên mặt phẳng XZ
             Quaternion newRotation = Quaternion.LookRotation(direction, Vector3.up);
-            // Áp dụng rotation mới cho nhân vật
             transform.rotation = newRotation;
         }
         if (canMoveForward || joystick.Vertical < 0)
